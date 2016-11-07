@@ -124,6 +124,8 @@ class SiteController extends Controller
         ->asArray()
         ->all();
         
+        $where = '';
+        
         foreach($result as $k=>$item) {
             
             $uid = $item['user_id'];
