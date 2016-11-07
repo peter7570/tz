@@ -134,14 +134,15 @@ class SiteController extends Controller
             
             if(!$result) {
              
-             if($where) $where .= ' OR ';  
+             if(!empty($where)) $where .= ' OR ';  
              $where .= ' `user`.`id` = '.$uid; 
             
             }
 
         }
 
-        ($where) ? $qw = "SELECT `user`.* FROM `user` WHERE ".$where : $qw = "SELECT `user`.* FROM `user`"; 
+        if(!empty($where)) { $qw = "SELECT `user`.* FROM `user` WHERE ".$where; }
+         else { $qw = "SELECT `user`.* FROM `user` WHERE `user`.`id` = 0"; }
 
         $dataProvider = new ActiveDataProvider([
 
