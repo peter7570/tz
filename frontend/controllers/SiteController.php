@@ -141,7 +141,7 @@ class SiteController extends Controller
 
         }
 
-        $qw = "SELECT `user`.* FROM `user` WHERE ".$where; 
+        ($where) ? $qw = "SELECT `user`.* FROM `user` WHERE ".$where : $qw = "SELECT `user`.* FROM `user`"; 
 
         $dataProvider = new ActiveDataProvider([
 
